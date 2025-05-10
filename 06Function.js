@@ -1,45 +1,69 @@
-//Functions allow us create useable code in Javascript
+/***************************************************************
+ * FUNCTIONS IN JAVASCRIPT
+ ***************************************************************/
+
+// A function lets you group reusable code into a block
 
 function myFunction() {
   console.log("My first function");
 }
-myFunction(); //Here the function is being called :- The code in the function runs anytime it is being called
 
-//Passing values to the function with an argument
-/*
-Parameters are variables that act as placeholders for the values that are to be inputed to a function  when is called
-*/
+myFunction(); // Function call — runs the code inside
+
+/***************************************************************
+ * PASSING ARGUMENTS TO FUNCTIONS
+ ***************************************************************/
+
+// Parameters are placeholders used when defining a function
+// Arguments are actual values passed in when calling the function
+
 function yourFunction(a, b) {
-  console.log(a - b);
+  console.log("a - b =", a - b);
 }
-yourFunction(10, 5);
-//Output is 5
+
+yourFunction(10, 5); // Output: 5
 
 function ourFunction(x, y) {
-  console.log(x + y);
+  console.log("x + y =", x + y);
 }
-ourFunction(80, 20);
 
-//Global scope and functions
-/* Scope Refers to the visibility of variables
-- Variables which are defined outside of your functions have global scope
-- Global scope means that it can be seen everywhere in your Javascript code
- */
+ourFunction(80, 20); // Output: 100
 
+/***************************************************************
+ * SCOPE IN JAVASCRIPT
+ ***************************************************************/
+
+// Scope refers to the visibility/accessibility of variables
+
+// Variables declared outside any function are in the global scope
 var globalScope = 10;
 
 function test() {
-  automaticGlobal = 5;
-  /*If we had added a var keyword to the variable above, it would have been scoped to the test function
-  But since there is no keyword, then the variable becomes a global variable and can be accessed anywhere*/
+  automaticGlobal = 5; // ⚠️ Implicitly global (if not using 'use strict')
+  /* Without a declaration keyword (var, let, const), 
+     this becomes a global variable — not recommended. */
 }
+
+test(); // Make sure to call test() so automaticGlobal is actually defined
 
 function checkScope() {
   var output = "";
-  if (typeof globalScope != undefined) {
+
+  if (
+    typeof globalScope !== "undefined" &&
+    typeof automaticGlobal !== "undefined"
+  ) {
     output += globalScope + automaticGlobal;
-    /*Run in a browser and not in the CLI, because the CLI automatically adds a var keyword to the automaticGlobal variable,
-     thus causing an eror of not defined*/
+    console.log("Combined output:", output); // Output: 15
+  } else {
+    console.log("One or both variables are undefined");
   }
 }
+
 checkScope();
+
+/*
+Note:
+In modern JavaScript or with `"use strict"`, 
+creating global variables without declaration is not allowed — always use let/const/var!
+*/

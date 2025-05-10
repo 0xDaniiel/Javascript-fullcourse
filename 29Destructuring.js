@@ -1,69 +1,69 @@
-//Destructuring Assignments
-/* - Destructuring is a way to unpack values from arrays, or properties from objects, into distinct variables.
-   -Is a special syntax for neatly assigning values taken correctly from an object to a variable
+// Destructuring Assignments
+/*
+   - Destructuring is a way to unpack values from arrays, or properties from objects, into distinct variables.
+   - It's a special syntax for neatly assigning values from an object or array into variables.
+
 */
 
-var vowels = { a: 1, e: 5, i: 9, o: 15, u: 21 };
-//To get the individuals values, the old way was
-var a = vowels.a;
-var e = vowels.e;
-var i = vowels.i;
-var o = vowels.o;
-var u = vowels.u;
-//The new way is
-function results() {
-  var { a, e, i, o, u } = vowels;
-  console.log(vowels);
-}
-results(); //Output { a: 1, e: 5, i: 9, o: 15, u: 21 };
-//Using the destructuring method to get the values from objects and assign them to another variable
+// Example: Destructuring an object
+const vowelValues = { a: 1, e: 5, i: 9, o: 15, u: 21 };
 
-const TEST_SCORES = {
+// Old way of getting the values:
+const a = vowelValues.a;
+const e = vowelValues.e;
+const i = vowelValues.i;
+const o = vowelValues.o;
+const u = vowelValues.u;
+
+// New way using destructuring:
+function displayVowelValues() {
+  const { a, e, i, o, u } = vowelValues; // Destructuring the object properties into variables
+  console.log({ a, e, i, o, u }); // Output the destructured values
+}
+displayVowelValues(); // Output: { a: 1, e: 5, i: 9, o: 15, u: 21 }
+
+// Destructuring in functions
+const testScores = {
   highest: 79,
   lowest: 10,
 };
 
-function getHighest(result) {
-  "use strict";
-  const { highest: theHighest } = result;
-  //Gets the highest field from the result's object and then store it in theHighest variable
-  return theHighest;
+function getHighestScore(scores) {
+  const { highest: maxScore } = scores; // Destructuring to extract 'highest' and rename it to maxScore
+  return maxScore;
 }
-console.log(getHighest(TEST_SCORES)); //Output 79
-//The function takes the TEST_SCORES as the argument passed for the parameter results
+console.log(getHighestScore(testScores)); // Output: 79
 
-//DESTRUCTING ASSIGNMENTS WITH NESTED OBJECTS
-const nestedObj = {
+// Destructuring with nested objects
+const subjectScores = {
   maths: { best: 98, worst: 46 },
   english: { best: 95, worst: 32 },
 };
 
-function bestInMaths(subj) {
-  "use strict";
+function getBestMathsScore(scores) {
   const {
-    maths: { best: theBest },
-  } = subj;
-  return theBest;
+    maths: { best: bestMathsScore }, // Destructuring nested 'maths' object to get 'best' score
+  } = scores;
+  return bestMathsScore;
 }
-console.log(bestInMaths(nestedObj)); //Output 98
+console.log(getBestMathsScore(subjectScores)); // Output: 98
 
-/*To get the best in maths, with the destructuring method, 
-  => first you take maths out , then assign it to another curly brace
-  => and then take the best out of the maths object and assign it to theBest variable
-  */
-
-//Using Destructuring to assign variables from an array
+// Destructuring with arrays
 /*
-
-The difference between destructuring from an array and from an object is because you cannot specify
- which element goes into the destructured variable, it goes in order, except is we use a [  , , ]
- to skip the elements we don't want in the destructured variable 
+   When destructuring an array, the values are assigned based on their position in the array.
+   You cannot specify which element goes into a particular variable like you can with objects.
+   If you want to skip elements, you can use a blank comma ( , ) to ignore certain values.
 */
 
-const [, b, c, , , f] = [1, 2, 3, 4, 5, 6];
+const array = [1, 2, 3, 4, 5, 6];
+const [, secondValue, thirdValue, , , sixthValue] = array; // Skipping the first, fourth, and fifth elements
 
-console.log(b, c, f); //Output 2 3 6
+console.log(secondValue, thirdValue, sixthValue); // Output: 2 3 6
 /*
-Because we only represented 2,3,6 by alphabets and printed the alphabet, while 
-1,4,5 were represented by [ ,] and where filtered out
+   In this example:
+   - secondValue is assigned the value at index 1 (2)
+   - thirdValue is assigned the value at index 2 (3)
+   - sixthValue is assigned the value at index 5 (6)
+   - The values at indices 0, 3, and 4 are skipped using commas.
 */
+

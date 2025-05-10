@@ -1,21 +1,36 @@
-//ACCESSING NESTED ARRAYS
+// ACCESSING NESTED ARRAYS
+/*
+In this case, we have an array of objects, each containing properties like 'name', 'languages', and 'jobType'.
+We will use array indexing to access individual items and dot notation to access the properties of the objects.
+*/
+
 var about = [
   {
     name: "Dan",
-    languages: ["Html", "CSS", "Javascript"],
+    languages: ["HTML", "CSS", "JavaScript"],
     jobType: "Remote",
   },
   {
     name: "Danny",
-    languages: ["Next js", "React js", "Tailwind CSS"],
+    languages: ["Next.js", "React.js", "Tailwind CSS"],
     session: true,
   },
 ];
-console.log(about[0].languages[2]);
-/*About at index which is the first array, using dot notation to navigate through the language key,
- at the index 2, which is the 3rd element in the array => Javascript*/
 
-//RECORD COLLECTION
+// Accessing the 3rd language in the first object
+console.log(about[0].languages[2]);
+// Output: JavaScript
+/* Explanation:
+   - `about[0]` accesses the first object in the `about` array.
+   - `.languages` accesses the 'languages' array within that object.
+   - `[2]` accesses the 3rd item in the 'languages' array (remember, arrays are 0-indexed).
+*/
+
+// RECORD COLLECTION
+/*
+We have a collection of soccer players, each represented as an object. The record contains personal information like 'age', 'position', and the teams they've scored goals against.
+The `updateRecords` function allows us to update the records based on given conditions.
+*/
 
 const record = {
   messi: {
@@ -57,33 +72,40 @@ const record = {
   },
 };
 
+// Create a deep copy of the record object to ensure we preserve the original record data.
 var recordCopy = JSON.parse(JSON.stringify(record));
-//This is just a fancy way of saving the original copy of the records, since we'll be updating it via the function below
+
+/*
+Function to update the records of a player.
+  - If `values` is an empty string, the specified property will be deleted from the player.
+  - If `properties` is 'goalAgainst', we add the new value to the 'goalAgainst' array.
+  - For any other property, we simply update the value to the provided value.
+*/
 
 function updateRecords(player, properties, values) {
   if (values === "") {
+    // If the value is an empty string, delete the specified property
     delete record[player][properties];
   } else if (properties === "goalAgainst") {
+    // If the property is goalAgainst, ensure it's an array and push the new value
     record[player][properties] = record[player][properties] || [];
     record[player][properties].push(values);
   } else {
+    // For other properties, directly set the new value
     record[player][properties] = values;
   }
 
   return record;
 }
-console.log(
-  updateRecords("ronaldo", "goalAgainst", "Bayern")
-); /*In your output, under ronaldo.goalAgainst, ayern has been added, 
-try replacing bayern with an empty string, and see it's output and also replace goalAgainst with something else,
- the more you manipulate the function, the better you understand */
 
-/* EXPLAINING THE CONDISTIONAL STATEMENT
--If the value is blank, delete the property,
+// Testing the updateRecords function
+console.log(updateRecords("ronaldo", "goalAgainst", "Bayern"));
+// Output: The 'goalAgainst' array for Ronaldo is updated with "Bayern"
 
-- Else If the properties is goal against, check the record.player.property; If it exists, it should be equal to itself,
-otherwise add an empty array.
--It exists i.e goalAgainst , so we push an values into the end of the array,
+// Testing the delete operation by passing an empty string
+console.log(updateRecords("ronaldo", "penalties", ""));
+// Output: The 'penalties' property for Ronaldo is deleted
 
--Else when the properties is not goalAgainst, then we just set the properties to equal the value.
-*/
+// Testing other property updates
+console.log(updateRecords("messi", "position", "Attacker"));
+// Output: Messi's position is updated to "Attacker"

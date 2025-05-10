@@ -1,49 +1,54 @@
-/* CASE SENSITIVITY IN VARIABLES*/
+/***************************************************************
+ * CASE SENSITIVITY IN VARIABLES
+ ***************************************************************/
+
+// JavaScript variable names are **case-sensitive**
 var name = "Javascript";
-nAME = "JScript";
+nAME = "JScript"; // ❌ Error: nAME is not declared
 
-//These are not the same, and if you try to run the code, you will get an error nAME is not declared
+// Always declare variables before using them, and use consistent casing.
+// Recommended: use camelCase for variable names
+// Example:
+let myVariableName = "value";
 
-//when declaring a variable, camelCase is adviced
+/***************************************************************
+ * BASIC MATHEMATICAL OPERATIONS IN JAVASCRIPT
+ ***************************************************************/
 
-//Mathematical operation in js
-
-//Addition
+// ADDITION
 var x = 10;
 var y = 20;
+var sum = x + y;
+console.log("Addition (x + y):", sum); // Output: 30
 
-var z = x + y;
-console.log(z); // output 30
-
-//Subtraction
+// SUBTRACTION
 var a = 10;
 var b = 20;
+var difference = a - b;
+console.log("Subtraction (a - b):", difference); // Output: -10
 
-var c = a - b;
-console.log(c); // Output -10
-
-//Multiplication
+// MULTIPLICATION
 var d = 10;
 var e = 20;
+var product = d * e;
+console.log("Multiplication (d * e):", product); // Output: 200
 
-var f = d * e;
-console.log(f); //Output 200
-
-//Division
+// DIVISION
 var g = 10;
 var h = 20;
+var quotient = g / h;
+console.log("Division (g / h):", quotient); // Output: 0.5
 
-var i = g / h;
-console.log(i); //output 0.5
+/***************************************************************
+ * INCREMENT AND DECREMENT
+ ***************************************************************/
 
-//Increment
+// INCREMENT
 var j = 10;
-j++;
-console.log(j); //Output 11
-// This work better instead of j + 1
+j++; // Same as: j = j + 1
+console.log("Incremented j:", j); // Output: 11
 
-//Decrement
+// DECREMENT
 var k = 10;
-k--;
-console.log(k); //output 9
-//This works better instead of k-1
+k--; // Same as: k = k - 1
+console.log("Decremented k:", k); // Output: 9

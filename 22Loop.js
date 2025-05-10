@@ -1,7 +1,4 @@
-/*If we pass in the name and the property, it should return the  value, e.g if we pass in the name Dan, and the
-Property age, it should return 5
-But if the name passed in does not exist,it should return No such contact and if there's no property, it should return no such property 
-*/
+// Data structure holding contact information
 var contacts = [
   {
     name: "Dan",
@@ -20,21 +17,31 @@ var contacts = [
   },
 ];
 
-function lookUpProfile(name, prop) {
+// Function to look up a contact's information based on name and property
+function lookUpProfile(contactName, property) {
+  // Looping through the contacts array to find the matching contact
   for (var i = 0; i < contacts.length; i++) {
-    if (contacts[i].name === name) {
-      return contacts[i][prop] || "No such property";
+    // Checking if the current contact's name matches the input name
+    if (contacts[i].name === contactName) {
+      // If the contact exists, return the requested property or "No such property"
+      // Note: Use the "||" operator to return a default message if the property doesn't exist
+      return contacts[i][property] || "No such property";
     }
-    return "No such contact";
   }
+
+  // If no contact with the provided name is found, return "No such contact"
+  // Tip: It's better to return after the loop if no match is found, rather than inside it.
+  return "No such contact";
 }
-var result = lookUpProfile("Dan", "age");
-console.log(result); //Output 5, because Dan & age exists in the array
 
-//Where name does not exist
-var resultName = lookUpProfile("Bob", "age");
-console.log(resultName); //Output No such contact
+// Test case where both name and property exist
+var result1 = lookUpProfile("Dan", "age");
+console.log(result1); // Output: 5 (because Dan exists and has an "age" property)
 
-//Where property does not exist
-var resultProp = lookUpProfile("Dan", "Skills");
-console.log(resultProp); //Output No such property
+// Test case where the name does not exist in the contacts list
+var result2 = lookUpProfile("Bob", "age");
+console.log(result2); // Output: No such contact (because Bob is not in the contacts list)
+
+// Test case where the property does not exist for the contact
+var result3 = lookUpProfile("Dan", "skills");
+console.log(result3); // Output: No such property (because Dan does not have a "skills" property)

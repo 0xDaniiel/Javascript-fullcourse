@@ -1,12 +1,13 @@
-//Switch case can be used in place of chained if and else statement
+// Switch Case: A more efficient way to handle multiple conditional checks than chained if-else statements
 /*
-A switch statement tests a value and can have many case statements which define various possible values
+A switch statement tests a value and can have many case statements which define various possible values.
 */
+
 function switchCase(day) {
   switch (day) {
     case 1:
       console.log("Monday");
-      break;
+      break; // Breaks out of the switch block after printing Monday
     case 2:
       console.log("Tuesday");
       break;
@@ -25,22 +26,20 @@ function switchCase(day) {
     case 7:
       console.log("Sunday");
       break;
-    default:
+    default: // The default is the same as the "else" in an if-else statement.
       console.log("Invalid day");
   }
 }
-switchCase(7);
-
-/*Means if the value passed in day is 1, print Monday, and if the value passed is 2, print Tuesday
-If the value passed is 3, print Wednesday, and so on.
-THIS METHOD USES THE STRICT OPERATOR === , so 1 and "1" are not the same
-*/
-
-//Break means we are at the end of the case statement, if you do not add a break statement, it will just run all the codes automatically
-//The default is like the else in an if-else statement, if all cases are false, then run the default
+switchCase(7); // Output: Sunday
 
 /*
-Switch case with multiple identical option statements
+The switch statement uses the strict equality operator `===`, so values like 1 and "1" would be considered different.
+If the passed argument is 1, it will print "Monday", and if the argument is 7, it will print "Sunday".
+*/
+
+/* 
+The break statement tells JavaScript to stop executing the code inside the switch after a match is found.
+Without it, it will continue executing all subsequent cases (even if they don't match), which is called "fall-through."
 */
 
 function identicalCase(day) {
@@ -50,23 +49,35 @@ function identicalCase(day) {
     case 3:
     case 4:
     case 5:
-      console.log("Weekday");
+      console.log("Weekday"); // This will run for any day from 1 to 5
       break;
     case 6:
     case 7:
-      console.log("Weekend");
+      console.log("Weekend"); // This will run for days 6 or 7
       break;
     default:
       console.log("Invalid day");
   }
 }
-identicalCase(5);
+identicalCase(5); // Output: Weekday
 
-//Return Boolean from a function
+/*
+Switch cases with multiple identical options:
+In the `identicalCase` function, days 1 through 5 will all print "Weekday" and days 6 and 7 will print "Weekend".
+This eliminates the need to write separate case statements for each individual day.
+*/
+
+/*
+Returning Boolean values from a function
+*/
+
 function isLess(x, y) {
-  return x > y;
+  return x > y; // Returns true if x is greater than y, false otherwise.
 }
-console.log(isLess(7, 9));
-//Returns false because 7 is not greater than 9
 
-//Return early pattern from Functions
+console.log(isLess(7, 9)); // Output: false (because 7 is not greater than 9)
+console.log(isLess(10, 5)); // Output: true (because 10 is greater than 5)
+
+/*
+This is a good example of a function that simply evaluates a condition and returns a boolean value.
+*/

@@ -1,21 +1,24 @@
-//Switching place of variables using destructuring
-let first = 60,
-  second = 20;
+// Switching places of variables using destructuring
+let firstValue = 60,
+  secondValue = 20;
 
 (() => {
   "use strict";
-  [first, second] = [second, first];
+  [firstValue, secondValue] = [secondValue, firstValue]; // Swap values using destructuring
 })();
-console.log(first, second); //Output 20 60
 
-//Destructing assignment with the rest operator
-let arr = [1, 2, 3, 4, 5, 6];
-let [a, b, ...c] = arr; //We represented 1,2 with a and b
+console.log(firstValue, secondValue); // Output: 20 60
 
-console.log(c); //And then printed ...c representing the rest of the array, aside a and b
+// Destructuring assignment with the rest operator
+let numberArray = [1, 2, 3, 4, 5, 6];
 
-//Using Destructuring assignment to pass an object as a function's parameter
-const stats = {
+// Assign first two values to variables a and b, and the rest to variable c
+let [firstElement, secondElement, ...remainingElements] = numberArray;
+
+console.log(remainingElements); // Output: [3, 4, 5, 6]
+
+// Destructuring assignment to pass an object as a function's parameter
+const statistics = {
   max: 56.78,
   standard_deviation: 4.34,
   median: 34.54,
@@ -23,16 +26,13 @@ const stats = {
   min: -0.75,
 };
 
-const half = (function () {
+// Function using destructuring directly in the parameter
+const calculateHalf = (function () {
   "use strict";
   return function half({ max, min }) {
-    return max + min / 2.0;
+    return (max + min) / 2.0; // Calculate half of the sum of max and min
   };
 })();
-console.log(stats);
-console.log(half(stats));
-/*Instead of using the stat as the parameter of the function, which would have returned the whole data,
-we desructured it, selecting only the min and max datas in the object
-This is mostly used in API requests, where your API contains alot of data, most of which you do not need,
-so you can use the destructuring asignment to select the data you need
- */
+
+console.log(statistics); // Output: full statistics object
+console.log(calculateHalf(statistics)); // Output: 28.515 (half of max + min)

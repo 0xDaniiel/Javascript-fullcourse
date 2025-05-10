@@ -1,60 +1,84 @@
-//Escape sequences in a string
-// \': single quote
-// \": double quote
-// \\: backslash
-// \n: new line
-// \t: tab, 8 spaces
-// \b : backspace
-// \r : carriage return
-// \f : form feed
+/***************************************************************
+ * ESCAPE SEQUENCES IN STRINGS
+ ***************************************************************/
 
-//String Concatenation
+// \'  → Single quote
+// \"  → Double quote
+// \\  → Backslash
+// \n  → New line
+// \t  → Tab (approx. 8 spaces)
+// \b  → Backspace
+// \r  → Carriage return
+// \f  → Form feed
 
-//Plus operator
+var escapeExample = 'Line1\nLine2\tTabbed\\Backslash"Quote"';
+console.log(escapeExample);
+
+/***************************************************************
+ * STRING CONCATENATION
+ ***************************************************************/
+
+// Using the + operator
 var myName = "I am " + "Javascript";
-console.log(myName); // I am Javascript
+console.log(myName); // Output: I am Javascript
 
-// Plus equal operator
-var myName = "I am ";
-myName += "Javascript";
-console.log(myName);
+// Using the += operator
+var intro = "I am ";
+intro += "Javascript";
+console.log(intro); // Output: I am Javascript
 
-//Concatenating strings with variables
-var myName = "I am ";
-var myAge = myName + 25;
+/***************************************************************
+ * CONCATENATING STRINGS WITH VARIABLES
+ ***************************************************************/
 
-console.log(myAge); //I am 25
+var nameIntro = "I am ";
+var age = 25;
+var sentence = nameIntro + age;
+console.log(sentence); // Output: I am 25
 
-//Appending variables to strings
+/***************************************************************
+ * APPENDING VARIABLES TO STRINGS
+ ***************************************************************/
+
 var anAdjective = "Awesome!";
-var word = "Javacript is ";
+var word = "Javascript is ";
 word += anAdjective;
-console.log(word); //Output Javascript is awesome
+console.log(word); // Output: Javascript is Awesome!
 
-//Length of a string
+/***************************************************************
+ * STRING LENGTH
+ ***************************************************************/
+
 var job = "Programmer";
-console.log(job.length); //Output 10,  there are 10 characters in the word "p r o g r a m m e r"
+console.log("Length of 'Programmer':", job.length); // Output: 10
 
-//Bracket Notation to find a string first character
-// using their index
-var firstLetterOfFirstName = "";
+/***************************************************************
+ * BRACKET NOTATION - ACCESSING STRING CHARACTERS
+ ***************************************************************/
+
+// First character
 var firstName = "Ada";
-firstLetterOfFirstName = firstName[0];
-console.log(firstLetterOfFirstName);
+var firstLetter = firstName[0];
+console.log("First letter:", firstLetter); // Output: A
 
-//Bracket Notation to find a string second character
-var secondLetterOfFirstName = "";
-var firstName = "Ada";
-secondLetterOfFirstName = firstName[1];
-console.log(secondLetterOfFirstName);
+// Second character
+var secondLetter = firstName[1];
+console.log("Second letter:", secondLetter); // Output: d
 
-//Bracket Notation to find a string last character
-var lastname = "Javascript";
-var lastLetterOfLastName = lastname[lastname.length - 1];
-console.log(lastLetterOfLastName); //output t
+// Last character
+var lastName = "Javascript";
+var lastLetter = lastName[lastName.length - 1];
+console.log("Last letter:", lastLetter); // Output: t
 
-//String Immutability
+/***************************************************************
+ * STRING IMMUTABILITY
+ ***************************************************************/
+
 var hey = "Jello World";
-hey[0] = "H";
-//This will throw an error, because strings are immutable, so it is best you do it as
-hey = "Hello world";
+
+// Strings are immutable → individual characters can't be changed directly
+// hey[0] = "H"; // ❌ This won't work
+
+// Correct approach: reassign the entire string
+hey = "Hello World";
+console.log(hey); // Output: Hello World

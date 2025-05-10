@@ -1,57 +1,56 @@
-//Testing Objects for properties
+// Testing Objects for Properties
 /*
-You can check if an object has a property using the hasOwnproperty method 
+You can check if an object has a property using the hasOwnProperty method 
 */
-var myObj = {
-  key: "value",
+
+var sampleObject = {
+  key1: "value1",
   key2: "value2",
   key3: "value3",
 };
 
-function checkObject(objectKey) {
-  if (myObj.hasOwnProperty(objectKey)) {
-    console.log("myObj has a key property");
+function checkPropertyExistence(propertyKey) {
+  if (sampleObject.hasOwnProperty(propertyKey)) {
+    console.log(`sampleObject has the property: ${propertyKey}`);
   } else {
-    return "Not found";
+    return "Property not found";
   }
 }
-checkObject("key");
-//Output myObj has a key property
-/*
-Here the function check if the object has the key passed into the function's argument, and if it does, it returns
-myObject has a key property else it returns Not found e.g 
-*/
-console.log(checkObject("key5")); //Output Not found
 
-//MANIPULATING COMPLEX OBJECTS
-var dev = [
+// Check if 'key1' exists in the object
+checkPropertyExistence("key1"); // Output: sampleObject has the property: key1
+
+// Check if 'key5' exists in the object
+console.log(checkPropertyExistence("key5")); // Output: Property not found
+
+// MANIPULATING COMPLEX OBJECTS
+var developers = [
   {
     name: "Dan",
     profession: "Developer",
-    skills: ["HTML", "CSS", "Javascript"],
+    skills: ["HTML", "CSS", "JavaScript"],
     jobType: "Remote",
   },
 
   {
     name: "Danny",
     profession: "Programmer",
-    skills: ["Next js", "React js", "Tailwind CSS"],
+    skills: ["Next.js", "React.js", "Tailwind CSS"],
     session: true,
   },
 ];
 
-//ACCESSING NESTED OBJECTS
-var about = {
+// ACCESSING NESTED OBJECTS
+var personalDetails = {
   name: {
     firstName: "Dan",
     languages: {
-      basic: "Html",
+      basic: "HTML",
       styling: "Tailwind CSS",
-
       complex: {
-        advanced: "Typescript",
-        framework: "Next js",
-        library: "React js",
+        advanced: "TypeScript",
+        framework: "Next.js",
+        library: "React.js",
       },
     },
     hobbies: ["Coding", "Reading", "Exercising"],
@@ -59,10 +58,10 @@ var about = {
   },
 };
 
-//Using dot notation
-console.log(about.name.firstName); //Output Dan
-console.log(about.name.languages.complex.advanced); //Output Typescript
-console.log(about.name.hobbies[1]); //Output Reading
+// Using dot notation
+console.log(personalDetails.name.firstName); // Output: Dan
+console.log(personalDetails.name.languages.complex.advanced); // Output: TypeScript
+console.log(personalDetails.name.hobbies[1]); // Output: Reading
 
-//Using bracket notation
-console.log(about["name"]["languages"]["complex"]["advanced"]); //Output Typescript
+// Using bracket notation (useful for dynamically accessing properties)
+console.log(personalDetails["name"]["languages"]["complex"]["advanced"]); // Output: TypeScript

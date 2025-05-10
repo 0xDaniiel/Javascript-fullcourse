@@ -1,59 +1,96 @@
-//Difference betwen Var and let
+// Difference between var and let
 
 /*
-For a long time in Javascript, if you're to declare a variable, you must use the var keyword,
-But starting in 2015 we can now declare variables with let and const
+For a long time in JavaScript, if you were to declare a variable, you would use the `var` keyword.
+But starting in ES6 (2015), we now have two more ways to declare variables: `let` and `const`.
+
+Let’s look at the differences between `var` and `let`.
 */
 
-/*
-Let does not let you declare a variable twice
+/* 
+`let` does not allow you to declare a variable twice within the same scope.
 */
+// With `var`, you can declare a variable multiple times in the same scope.
 var names = "Javascript";
-var names = "Typescript";
+var names = "Typescript"; // No error here
 
-console.log(names); //Output Typescript
+console.log(names); // Output: "Typescript"
+// The last assignment value gets retained
 
-//While let
+// But `let` does not allow this:
 let language = "Javascript";
-// let language = "Typescript";  Uncomment this
-console.log(language); //Output Error
+// let language = "Typescript";  // Uncommenting this will throw an error
 
-//But if we reinitialize without using the keyword let, it does not throw an error
+console.log(language); // Output: Error (because `language` is already declared with `let`)
+
+// However, reinitializing the variable (without using `let` again) works fine:
 language = "C++";
-console.log(language);
-//Output C++ Because variables can be reinitialised but not declared twice using same let keyword
+console.log(language); // Output: "C++"
 
-/*"Use strict" :- This enables strict mode which catches common coding mistakes and unsafe actions in Javascript, it can 
-be used at the top of the file or in a function
-e.g if you write a variable and don't declare it with var, let and const, it prompts an error */
+// Variables declared with `let` can be reassigned but not redeclared in the same scope.
 
-//SCOPES OF KEYWORDS
+///////////////////////////////////////////////////////////////////
+
+// "use strict" mode
 /*
-If a variable is declared with VAR, it is declared globally and can be used anywhere, or locally when it is declared inside in a function
-If a variable is declared with LET, it is declared locally and can only be used inside the block in which it is declared*/
+"Use strict" is a way of enforcing stricter parsing and error handling in your JavaScript code.
+It helps you catch common coding mistakes and unsafe actions.
 
-//FOR VAR
+For example, if you try to assign a value to a variable without declaring it using `var`, `let`, or `const`,
+it will throw an error in strict mode.
+*/
+
+// SCOPES OF KEYWORDS (Global vs Local Scope)
+///////////////////////////////////////////////////////////////////
+
+/*
+If a variable is declared with `var`, it is scoped to the nearest function (or globally if declared outside any function).
+If a variable is declared with `let`, it is scoped to the nearest block (the code inside `{}`).
+*/
+
+// Example with `var`:
 function checkScope() {
   "use strict";
-  // var i = "function scope";
+  // var i = "function scope"; // You can still use var here
   if (true) {
     var i = "block scope";
-    console.log("Block Scope i is ", i); //Output => Block scope is block scope
+    console.log("Block Scope i is ", i); // Output: "Block scope" (because var has function scope)
   }
-  console.log("Function scope is ", i); //Output => Function scope is block scope, because we can still access a var keyword outside the block/local scope
+  console.log("Function scope is ", i); // Output: "Block scope" (because var is function-scoped and accessible outside block)
   return i;
 }
 checkScope();
 
-//FOR LET
+/*
+With `var`, the variable `i` is accessible outside the block, because `var` has a function-level scope, not a block-level scope.
+Thus, the function `checkScope()` will print "Block scope" in both cases, inside and outside the block.
+*/
+
+// Example with `let`:
 function checkBlock() {
   "use strict";
-  // let j = "function scope";
+  // let j = "function scope"; // You can still use let here
   if (true) {
     let j = "block scope";
-    console.log("Block Scope j is ", j); //Output => Block scope is block scope
+    console.log("Block Scope j is ", j); // Output: "Block scope"
   }
-  console.log("Function scope j is ", j); //Output j is not defined, because it cannot be referrenced outisde the if statement
-  return j; //Output j is not defined, because it cannot be referrenced outisde the if statement
+  console.log("Function scope j is ", j); // Error: ReferenceError: j is not defined
+  return j; // Error: ReferenceError: j is not defined
 }
 checkBlock();
+
+/*
+With `let`, the variable `j` is only accessible within the block (inside the `if` statement), 
+so trying to access it outside of the block will result in an error (`ReferenceError: j is not defined`).
+*/
+
+// Summary of `var` vs `let`:
+
+// 1. `var` is function-scoped (can be used inside functions, globally if declared outside functions).
+// 2. `let` is block-scoped (limited to the nearest `{}` block).
+
+// So, `let` provides better scoping rules that prevent unwanted errors due to variable redeclaration or unexpected behavior.
+// It's a good practice to use `let` (or `const` for constants) to declare variables unless you have a specific reason to use `var`.
+
+// Tips:
+// - Always prefer using `let` and `const` to avoid issues with redeclaring variables or confusing scoping behavior.

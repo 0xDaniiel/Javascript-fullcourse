@@ -1,54 +1,54 @@
-/* DATA VARIABLES
-- undefined
-- null
-- boolean
-- string
-- number
-- objects
-*/
+/***************************************************************
+ * JavaScript Data Types
+ ***************************************************************/
 
-/*
-Ways to declare a variable
-1. Var
-2. Let
-3. Const
-*/
+// 1. Undefined
+// 2. Null
+// 3. Boolean
+// 4. String
+// 5. Number
+// 6. Object (including arrays and functions)
 
-/*
-VAR 
-can be used throughout your whole program
-*/
+/***************************************************************
+ * Variable Declaration Keywords
+ ***************************************************************/
 
-/*LET
-can only be used in the scope where it is declared
-*/
+// var   → Function-scoped. Can be re-declared and updated.
+// let   → Block-scoped. Can be updated but not re-declared in the same scope.
+// const → Block-scoped. Cannot be updated or re-declared.
 
-/*CONST
-is a variable that should never change, it cannot be changed
-*/
+// Example:
+var x; // Declaration
+let y = 10; // Declaration and initialization
+const PI = 3.14; // Constant declaration (must be initialized)
 
-//STORING VARIABLES WITH ASSIGNMENT OPERATOR
-/*
-Difference between declaring and assigning variable
+/***************************************************************
+ * Variable Assignment
+ ***************************************************************/
 
-var a ;
-here a is declared
-var b = 2;
+// Declaring a variable without assigning a value:
+var a; // 'a' is declared but undefined
 
-The equal sign is the assignment operator which means 2 is assigned to b, or b is 2 in this code
+// Declaring and assigning:
+var b = 2; // 'b' is declared and assigned the value 2
 
-a = 7
- which means 7 is assigned to a, we don't need to declare a anymore because it has been declared above
-*/
+// Assigning a new value (no need to re-declare):
+a = 7; // 'a' now holds the value 7
 
-/*
+// The equal sign (=) is the assignment operator.
 
-*/
+/***************************************************************
+ * Example: Variable Manipulation
+ ***************************************************************/
 
 var a = 5;
 var b = 10;
 var c = "I am a ";
 
-a = a + 1; //Output 5 + 1 = 6
-b = b - 1; //Output 10 - 1 = 9
-c = c + "  string"; // Output "I am a string "
+a = a + 1; // a becomes 6
+b = b - 1; // b becomes 9
+c = c + "string"; // c becomes "I am a string"
+
+console.log(a); // 6
+console.log(b); // 9
+console.log(c); // "I am a string"

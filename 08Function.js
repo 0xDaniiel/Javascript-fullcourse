@@ -1,20 +1,28 @@
-//Stand in line
+/***************************************************************
+ * QUEUE: Stand in Line (FIFO)
+ ***************************************************************/
+
 /*
-A cue is an abstract data structure, where items are kept in order..
-New items are added to the back of the cue and old items are taken off from the cue,
-|| eg. the shift and push functions
- */
+A queue is an abstract data structure where items are kept in order.
+- New items are added to the back of the queue (using .push()).
+- Old items are removed from the front of the queue (using .shift()).
+*/
 
 function nextInLine(arr, item) {
-  arr.push(item); //This adds a number to the last element in the array
-  return arr.shift(); //And this returns the new array without the popped off item
+  arr.push(item); // Adds 'item' to the end of the array (queue).
+  return arr.shift(); // Removes and returns the first item from the array (queue).
 }
 
 var testArr = [1, 2, 3, 4, 5];
 
-console.log("Before: " + JSON.stringify(testArr));
-console.log(nextInLine(testArr, 6));
-console.log("After: " + JSON.stringify(testArr));
+// Display the state of the array before and after manipulation
+console.log("Before: " + JSON.stringify(testArr)); // Convert array to string for better visualization
+console.log("Returned value:", nextInLine(testArr, 6)); // Add 6 to the queue, remove the first item
+console.log("After: " + JSON.stringify(testArr)); // Show the updated array
 
-//You can add an item to the array that is passed in. And then it's going to return the first item on the list
-//JSON.stringify is a way to turn array into strings
+/*
+Explanation:
+- Initially, the array is [1, 2, 3, 4, 5].
+- The function adds 6 to the array (push) and removes the first item (shift).
+- The function returns the item that was removed (in this case, 1).
+*/

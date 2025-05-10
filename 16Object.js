@@ -1,30 +1,49 @@
-//Updating Object properties
+// Example of updating, adding, and deleting object properties
 
-var newObj = {
-  key1: "First value",
-  key2: "Second value",
-  key3: "Third value",
+// Initial object with keys and values
+var productInfo = {
+  name: "Laptop",
+  brand: "Dell",
+  price: 1200,
 };
 
-//We can update objects using dot notation
-newObj.key1 = "Replaced First value";
-console.log(newObj.key1);
-//Output Replaced First value the equal sign is the assignment operator
+// Updating an existing property using dot notation
+productInfo.price = 1000; // Changing the price of the laptop
+console.log(productInfo.price); // Output: 1000
 
-//Adding to a new key and value to an object
-newObj.key4 = "Fourth value";
-console.log(newObj.key4); //Output Fourth value
+// Adding a new property to the object using dot notation
+productInfo.stock = 50; // Adding the stock property to the object
+console.log(productInfo.stock); // Output: 50
 
-//Deleting a key and value from an object
-delete newObj.key4;
-console.log(newObj.key4);
-//Output undefined , because the key4 has been removed
+// Deleting a property from the object
+delete productInfo.stock; // Removing the stock property
+console.log(productInfo.stock); // Output: undefined, as the stock property is deleted
 
-//We can also use bracket notation to add to an object
-newObj["key5"] = "Fifth value";
-console.log(newObj.key5); //Output Fifth value
-//We can also use bracket notation to delete a key and value from an object
-delete newObj["key5"];
-console.log(newObj.key5);
+// Using bracket notation to update a property
+productInfo["brand"] = "HP"; // Changing the brand to "HP"
+console.log(productInfo["brand"]); // Output: HP
 
-//Objects can be used for lokups, by using it's key to get it's value
+// Using bracket notation to add a new property
+productInfo["color"] = "Black"; // Adding color property
+console.log(productInfo["color"]); // Output: Black
+
+// Using bracket notation to delete a property
+delete productInfo["color"]; // Removing the color property
+console.log(productInfo["color"]); // Output: undefined
+
+// Objects as lookups (Accessing values using keys)
+var userProfile = {
+  username: "john_doe",
+  email: "john.doe@example.com",
+  age: 28,
+};
+
+// Look up user data using keys
+var userEmail = userProfile.email; // Accessing email using dot notation
+console.log(userEmail); // Output: john.doe@example.com
+
+// Look up user data using bracket notation (useful for dynamic keys or keys with spaces)
+var userAge = userProfile["age"];
+console.log(userAge); // Output: 28
+
+// Objects are very useful for lookup purposes, as you can easily access values via their keys.

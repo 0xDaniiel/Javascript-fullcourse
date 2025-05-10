@@ -1,74 +1,86 @@
-//There are only two boolean values, which are true and false
+/***************************************************************
+ * BOOLEAN LOGIC AND CONDITIONAL STATEMENTS
+ ***************************************************************/
 
-/*Using conditional logic with if statements
-An if statement is used to make decision in codes
+/* 
+There are only two boolean values: true and false.
+Booleans are often used to make decisions in your code.
 */
+
+/***************************************************************
+ * Using an if statement
+ ***************************************************************/
 
 function howTrue(isTrue) {
   if (isTrue) {
-    return "Yes it's true";
+    return "Yes, it's true"; // If 'isTrue' is true, return this
   }
-  return "No it's not";
+  return "No, it's not"; // If 'isTrue' is false, return this
 }
-console.log(howTrue(true));
 
-//Output Yes it's true
+console.log(howTrue(true)); // Output: "Yes, it's true"
 
-/*
-Comaprison operator with equality operator ==
-A single equal sign is an assignment operator
+/***************************************************************
+ * Comparison operators
+ ***************************************************************/
+
+/* 
+Equality operator (==) checks if two values are equal, but it does NOT 
+check the data type. It can coerce different types into the same type.
 */
 
+// Example with equality operator (==)
 function testEqual(num) {
   if (num == 10) {
     return true;
   }
-  return "not equal";
+  return "not equal"; // Will return this if num is not equal to 10
 }
 
-console.log(testEqual(12));
-//Output not equal because the value in num is 12, which is not equal to 10
+console.log(testEqual(12)); // Output: "not equal"
 
-/*
-Comparison operator with strict equality operator ===
-A double equal sign is a comparison operator
-A single equal sign is an assignment operator
+/***************************************************************
+ * Strict equality operator (===)
+ ***************************************************************/
 
-=== Checks the data types, and if they are not of the same datatypes, it returns false
-
-IMPORTANT THING TO NOTE IS, == can change the data type, if it is a number with a string , but === will not for example
+/* 
+Strict equality (===) checks both the value and the data type.
+Unlike ==, it does not coerce values to match types.
 */
 
+// Example with strict equality operator (===)
 function testStrict(num) {
   if (num === 10) {
-    return true;
+    return true; // Returns true if the number is exactly 10 (same type + value)
   }
-  return "not equal";
+  return "not equal"; // Returns "not equal" if num is not exactly 10
 }
-console.log(10);
-//Output true because the value in num is 10, which is equal to 10
 
-// checking 10 and "10" using == and === operators"
+console.log(testStrict(10)); // Output: true
+
+/***************************************************************
+ * Comparing different types with == and ===
+ ***************************************************************/
+
+// Checking comparison between 10 (number) and "10" (string)
 function testStrictEqual(num) {
   if (num === 10) {
-    return true;
+    return true; // Returns true only if num is exactly 10 (number)
   }
-  return "not equal";
+  return "not equal"; // Returns "not equal" if num is not exactly 10
 }
-console.log(testStrictEqual("10"));
-//Output not equal
 
+console.log(testStrictEqual("10")); // Output: "not equal" (since "10" is a string, not a number)
+
+/* 
+With double equality (==), JavaScript allows for type coercion:
+It will convert "10" (a string) to 10 (a number), and they will match.
+*/
 function doubleEqual(num) {
   if (num == "10") {
-    return true;
+    return true; // Returns true because "10" (string) is converted to 10 (number)
   }
   return false;
 }
-console.log(doubleEqual(10));
-//Output true
 
-/*
-here 10 is a number and "10" is a string
-==  returns true because it overlooks the string, but focuses on the number
-=== returns not equal because it does not overlook the string
-*/
+console.log(doubleEqual(10)); // Output: true (because 10 == "10" after type coercion)

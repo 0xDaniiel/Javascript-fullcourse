@@ -1,36 +1,44 @@
-/*Arrow functions are shorter ways to represents function
-And are wriiten this way =()=>{
-    //code
-}
+/* Arrow functions are shorter ways to represent functions
+   They are written like this:
+   `() => { // code }`
+   Arrow functions don't need a `return` keyword if the code is a single line.
+*/
 
-In Most cases, arrow functions don't need return keyword, if the code is just a single line
- */
-//Anonymous arror functions
-var anon = () => {
-  return new Date().getDate();
+// Example of an anonymous arrow function
+const getCurrentDay = () => {
+  return new Date().getDate(); // returns the current day of the month
 };
 
-//Arrow functions with parameters
-var anon = (a, b) => a + b;
+// Arrow function with parameters
+const addNumbers = (a, b) => a + b; // returns the sum of a and b
 
-console.log(anon(1, 2)); //Output 3
+console.log(addNumbers(1, 2)); // Output: 3
 
-//Higher order arrow functions
+// Higher-order arrow functions
+/*
+A higher-order function is a function that takes another function as an argument.
+Common examples of higher-order functions include `map()`, `filter()`, and `reduce()`.
+*/
 
-/*When one function takes another function as an argument, that is a good time for an arrow function 
-Higher other functions involve map,filter,reduce */
+// Example using array methods
+const numbers = [4, 5.6, -9.8, 3.14, 0, 1, 2];
 
-const numberArr = [4, 5.6, -9.8, 3.14, 0, 1, 2];
+// This function computes the square of only positive integers in the array
+const squarePositiveIntegers = (arr) => {
+  const positiveIntegers = arr
+    .filter((num) => Number.isInteger(num) && num > 0) // filters only positive integers
+    .map((num) => num * num); // squares each positive integer
 
-// This function computes the square of only the positive integers in the array
-const squareNum = (arr) => {
-  const int = arr
-    .filter(
-      (num) => Number.isInteger(num) && num > 0
-    ) /*Filters throught the array, and selects only integers, && integers greater than 0 which are [4, 1, 2] */
-    .map((x) => x * x); //For each item in the array, multiply it by itself to get their squares
-
-  return int;
+  return positiveIntegers;
 };
-const result = squareNum(numberArr);
-console.log(result); //Output [16,1 ,4]
+
+const squaredResults = squarePositiveIntegers(numbers);
+console.log(squaredResults); // Output: [16, 1, 4]
+
+/*
+In this example:
+- `filter` selects only the integers greater than 0 from the array.
+- `map` squares each integer from the filtered array.
+
+These are classic use cases for arrow functions due to their conciseness and readability.
+*/
